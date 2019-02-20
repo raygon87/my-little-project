@@ -1,0 +1,56 @@
+#dropdownMenuButton {
+   background-color: transparent;
+   border: none;
+   font-size: 1.25rem;
+   position: relative;
+   left: -.62rem;
+}
+
+#dropdownMenuButton:hover {
+   border: none;
+   background: none;
+}
+
+#dropdownMenuButton:focus {
+   transition: none;
+   background-color: none;
+   border: none;
+   outline: none;
+   box-shadow: none;
+}
+
+#dropdownMenuButton:active {
+   transition: none;
+   background-color: none;
+   border: none;
+   outline: none;
+   box-shadow: none;
+}
+
+.dropdown-toggle::after {
+   margin-left: .1rem;
+   font-size: 1rem;
+   position: relative;
+   top: .5rem;
+}
+
+.dropdown-toggle::after:hover {
+   color:#3CE2AB !important;
+}
+
+.dropdown-menu.show {
+   font-size: .88rem;
+   margin-left: -3.12rem !important;
+   padding: .7rem !important;
+}
+
+.dropdown-menu a {
+}
+
+.dropdown-menu a:hover {
+   color: #3CE2AB;
+}
+
+.form-control {
+   height: 2.6rem;
+}

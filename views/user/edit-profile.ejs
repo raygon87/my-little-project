@@ -1,0 +1,53 @@
+<%- include('../includes/head.ejs') %>
+</head>
+<body>
+   <%- include('../includes/navigation.ejs') %>
+  
+   <!-- <% if(errorMessage) { %>
+      <div class="user-message user-message--error">
+         <%= errorMessage %>
+      </div>
+   <% } %> -->
+   <div class="container">
+      <div class="form-container">
+         <form class="form" action="/edit-profile" method="POST" novalidate>
+            <div class="form-header util-centered">
+               <h1>Edit Profile</h1>
+            </div>
+            <div class="form-group">
+               <label>First name</label>
+               <input 
+                  class="<%= validationErrors.find(error => error.param === 'firstName') ? 'invalid' : '' %> form-control"
+                  type="text" 
+                  placeholder="First Name" 
+                  name="firstName" 
+                  id="firstName" 
+                  value="<%= user.firstName %>">
+            </div>
+            <div class="form-group">
+               <label>Last name</label>
+               <input
+                  class="<%= validationErrors.find(error => error.param === 'lastName') ? 'invalid' : '' %> form-control"
+                  type="text" 
+                  placeholder="Last Name" 
+                  name="lastName" 
+                  id="lastName" 
+                  value="<%= user.lastName %>">
+            </div>
+            <div class="form-group">
+               <label>Email</label>
+               <input 
+                  class="<%= validationErrors.find(error => error.param === 'email') ? 'invalid' : '' %> form-control"
+                  type="email" 
+                  placeholder="email" 
+                  name="email" 
+                  id="email" 
+                  value="<%= user.email %>">
+            </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn btn-primary" type="submit">Update Profile</button>
+         </form>
+      </div>
+   </div>
+
+<%- include('../includes/footer.ejs') %>

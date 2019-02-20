@@ -1,0 +1,70 @@
+<%- include('./head.ejs') %>
+   <header>
+      <nav class="main-nav">
+         <div class="main-nav--left">
+            <ul class="main-nav--left-list">
+               <li class="main-nav--left-items">
+                  <a class="main-nav__link main-nav--left-link <%= path === '/' ? 'active' : '' %>" href="/">
+                        <img class="logo" src="/img/mylogo.png" alt="logo">
+                  </a>
+               </li>
+               <li class="main-nav--left-items">
+                  <a class="main-nav__link main-nav--left-link <%= path === '/products' ? 'active' : '' %>" href="/products">Shop</a>
+               </li>
+            </ul>
+         </div>
+         <div class="main-nav--right">
+            <ul class="main-nav--right-list">
+               <% if(isAuthenticated) { %>
+                  <!-- <li class="main-nav--right-items">
+                     <a class="main-nav--right-link" href="/"><%= user.firstName %></a>
+                  </li> -->
+                  <div class="dropdown">
+                        <span class="welcome">Welcome</span>
+                        <button 
+                           class="btn btn-secondary dropdown-toggle" 
+                           type="button" 
+                           id="dropdownMenuButton" 
+                           data-toggle="dropdown"
+                        >
+                        <a class="main-nav__link main-nav--right-link" href="/"><%= user.firstName %></a>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="drop-down-box">
+                           <a class="dropdown-item" href="/user/add-product">Add Product</a>
+                           <a class="dropdown-item" href="/user/products">My Products</a>
+                           <a class="dropdown-item" href="/edit-profile">Edit Profile</a>
+                        </div>
+                      </div>
+                  <li class="main-nav--right-items">
+                     <a class="main-nav__link main-nav--right-link cart <%= path === '/cart' ? 'active' : '' %>" href="/cart"><i class="fa fa-shopping-cart"></i></a>
+                  </li>
+                  <!-- <li class="main-nav--right-items">
+                     <a class="main-nav--right-link <%= path === '/user/add-product' ? 'active' : '' %>" href="/user/add-product">Add Product</a>
+                  </li> -->
+                  <!-- <li class="main-nav--right-items">
+                     <a class="main-nav--right-link <%= path === '/user/products' ? 'active' : '' %>" href="/user/products">My Products</a>
+                  </li>
+                  <li class="main-nav--right-items">
+                        <a class="main-nav--right-link <%= path === '/edit-profile' ? 'active' : '' %>" href="/edit-profile">Edit Profile</a>
+                     </li> -->
+               <% } %>
+
+               <% if(isAuthenticated) { %>
+                  <li class="main-nav--right-items">
+                     <form action="/logout" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <button class="mybtn btn-logout" type="submit">Logout</button>
+                     </form>
+                  </li>
+               <% } else { %>
+                  <li class="main-nav--right-items">
+                     <a class="main-nav__link main-nav--right-link <%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
+                  </li>
+                  <li class="main-nav--right-items">
+                     <a class="main-nav__link main-nav--right-link <%= path === '/register' ? 'active' : '' %>"" href="/register">Register</a>
+                  </li>
+               <% } %>
+            </ul>
+         </div>
+      </nav>
+   </header>

@@ -1,0 +1,50 @@
+<%- include('../includes/head.ejs') %>
+   <%- include('../includes/navigation.ejs') %>
+   
+   <div class="ui container">
+      <div class="cart">
+         <div class="form-header util-centered">
+            <h1>Your Cart</h1>
+         </div>
+         <div class="row">
+            <div class="col-md-8">
+               <% for(product of products) { %>
+               <div class="cart__description-box">
+                  <div class="cart__img-box">
+                     <img class="cart__img" src="<%= product.image %>" class="card__img" alt="<%= product.title %>">
+                  </div>
+                  <div class="cart__body">
+                     <div class="productAndTitle">
+                        <h3 class="cart__title"><%= product.title %> (<%= product.cartItem.quantity %>)</h3>
+                        <p class="cart__price">Price: $<%= product.cartItem.quantity * product.price %></p>
+                     </div>
+                     <p class="cart__description"><%= product.description %></p>
+                     <hr>
+                     <div class="EditAndDelete">
+                        <form action="/cart" method="POST">
+                           <input type="hidden" name="productId" value="<%= product.id %>">
+                           <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                           <button class="btn  btn-outline-secondary">Remove</button>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+               <% } %>
+            </div>
+            <div class="col-md-4">
+               <div class="cart__summary">
+                  <p class="cart__summary-title">Summary</p>
+                  <p class="cart__summary-subtotal">Subtotal <span>$<%= subTotal %></span></p>
+                  <p class="cart__summary-shippingFee">Shipping Fee <span>Free</span></p>
+                  <p class="cart__summary-tax">Tax <span>$<%= tax %></span></p>
+                  <div class="cart__summary-totalPrice">
+                     Total Price <span>$<%= totalPrice %></span>
+                  </div>
+                  <button class="btn btn-primary btn-checkout">Checkout</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   
+<%- include('../includes/footer.ejs') %>

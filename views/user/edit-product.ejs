@@ -1,0 +1,62 @@
+<%- include('../includes/head.ejs') %>
+</head>
+<body>
+   <%- include('../includes/navigation.ejs') %>
+   <div class="container">
+      <div class="form-container">
+         <% if(errorMessage) { %>
+            <div class="user-message user-message--error">
+               <%= errorMessage %>
+            </div>
+         <% } %>
+         <form class="form" action="/user/edit-product %>" method="POST" novalidate enctype="multipart/form-data">
+            <div class="form-header util-centered">
+               <h1>Edit Product</h1>
+            </div>
+            <div class="form-group">
+               <label for="title">title</label>
+               <input
+                  class="form-control"
+                  type="text" 
+                  placeholder="Title" 
+                  name="title" 
+                  id="title"  
+                  value="<% if (hasError) { %><%= oldInput.updatedTitle %><% } else { %><%= product.title %><% } %>">
+            </div>
+            <div class="form-group">
+               <label for="image">Image</label>
+               <input 
+                  class="form-control input-file"
+                  type="file" 
+                  placeholder="image" 
+                  name="image" 
+                  id="image"  
+                  value="<% if (hasError) { %><%= oldInput.updatedImage %><% } else { %><%= product.image %><% } %>">
+            </div>
+            <div class="form-group">
+               <label for="price">Price</label>
+               <input 
+                  class="form-control"
+                  type="number" 
+                  placeholder="Price" 
+                  name="price" 
+                  id="price" 
+                  value="<% if (hasError) { %><%= oldInput.updatedPrice %><% } else { %><%= product.price %><% } %>">
+            </div>
+            <div class="form-group"> 
+               <label for="description">Description</label>
+               <input 
+                  class="form-control"
+                  type="text" 
+                  placeholder="Description" 
+                  name="description" 
+                  id="description" 
+                  value="<% if (hasError) { %><%= oldInput.updatedDescription %><% } else { %><%= product.description %><% } %>">
+            </div>
+            <input type="hidden" name="productId" value="<%= product.id %>">
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn btn-primary" type="submit">Edit Product</button>
+         </form>
+      </div>
+   </div>
+<%- include('../includes/footer.ejs') %>

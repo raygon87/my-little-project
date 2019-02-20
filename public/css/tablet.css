@@ -1,0 +1,19 @@
+@media screen and (max-width: 900px) {
+   .main-nav--left {
+      margin-left: 2rem;
+   }
+
+   .main-nav--right {
+      margin-right: 2rem;
+   }
+
+   .card {
+      width: 30rem;
+      margin: 1.25rem;
+      box-shadow: .3rem .3rem .65rem rgba(0,0,0,.12);
+      transition: .2s;
+      z-index: 10;
+   }
+
+}
+w

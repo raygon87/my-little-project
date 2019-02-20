@@ -1,0 +1,38 @@
+@media screen and (max-width: 600px) {
+   html {
+      font-size: 50%;
+   }
+
+   .main-nav--left {
+      margin-left: 2rem;
+   }
+
+   .main-nav--right {
+      margin-right: 2rem;
+   }
+
+   .main-nav--left-items:not(:last-child) {
+      margin-right: 1rem;
+   }
+
+   .main-nav--right-items:not(:last-child) {
+      margin-right: 1.5rem;
+   }
+   
+   #dropdownMenuButton {
+      left: .3rem;
+   }
+
+   .product__avalability-quantity {
+      margin-left: 2rem;
+      padding: 2rem .5rem;
+   }
+
+   .product__qtyInput {
+      margin-right: 0;
+   }
+
+   .welcome {
+     margin-right: -1rem;
+   }
+}

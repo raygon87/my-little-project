@@ -1,0 +1,38 @@
+<%- include('../includes/head.ejs') %>
+   <%- include('../includes/navigation.ejs') %>
+
+   <div class="ui container">
+      <div class="product">
+         <div class="titleAndPriceBox">
+            <div>
+               <h2><%= product.title %></h2>
+            </div>
+            <div class="product__price">
+               <p>Price: $<%= product.price %></p>
+            </div>      
+         </div>
+         <div class="product__imgAndDescriptionBox">
+            <div class="product__image-box">
+               <img src="/<%= product.image %>" class="product__img" alt="<%= product.title %>">
+            </div>
+            <div class="product__avalability-quantity">
+               <p>Availabilty: In stock</p>
+               <p>Quantity: 10</p>
+               <div class="product__editQuantity">
+                  Qty <input class="product__qtyInput" name="productInput" type="text"> 
+                  <!-- <button class="btn-updateQty">Update</button> <span></span>
+                  <button class="btn-deleteProduct">Remove</button> -->
+                  <form action="/cart/<%= product.id %>" method="POST">
+                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                     <button type="submit" class="mybtn card__details-link add-to-cart-btn detailed-add-to-cart"><i class="fa fa-shopping-cart"></i></button>
+                  </form>
+               </div>
+            </div>
+         </div>
+         <div class="product__description">
+            <p><%= product.description %></p>
+         </div>
+      </div>
+   </div>
+   
+   <%- include('../includes/footer.ejs') %>

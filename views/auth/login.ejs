@@ -1,0 +1,42 @@
+<%- include('../includes/head.ejs') %>
+   <%- include('../includes/navigation.ejs') %>
+   <div class="container">
+      <div class="form-container">
+         <div class="form-header util-centered">
+            <h1>Login</h1>
+         </div>
+         <% if(errorMessage) { %>
+            <div class="user-message user-message--error">
+               <%= errorMessage %>
+            </div>
+         <% } %>
+         <form class="form" action="/login" method="POST" novalidate>
+            <div class="form-group">
+               <label for="email">Email</label>
+               <input
+                  autocomplete="off"
+                  class="form-control"
+                  type="email" 
+                  placeholder="Email" 
+                  name="email" 
+                  id="email"
+                  value="<%= oldInput.email %>">
+            </div>
+            <div class="form-group">
+               <label for="password">Password</label>
+               <input
+                  class="form-control"
+                  type="password" 
+                  placeholder="Password" 
+                  name="password" 
+                  id="password"
+                  value="<%= oldInput.password %>">
+            </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <button class="btn btn-primary" type="submit">Submit</button>
+            <a href="/reset-password" class="forgot-password">Forgot your password?</a>
+         </form>
+      </div>
+   </div>
+   
+<%- include('../includes/footer.ejs') %>
